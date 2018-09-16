@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  webserver:
+    build: .
+    ports:
+     - 7777:80
+    volumes:
+     - ./code:/code
+     - ./html:/var/www/html
