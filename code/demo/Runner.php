@@ -17,7 +17,9 @@ class Runner
 
         $this->initDir();
         $this->initFiles();
-        $this->runPhpcs();
+        if ($this->sourceFiles) {
+            $this->runPhpcs();
+        }
         $this->generateResultsPage();
         $this->removeSourceFiles();
         $this->installResults();
@@ -61,11 +63,18 @@ class Runner
 
     protected function generateResultsPage(): void
     {
-        $results = '<h2>PHP_CodeSniffer</h2>';
-        $results .= '<p>Here are the results from <a href="/intro-to-phpcs">PHP_CodeSniffer</a> when used to check for the PSR-2 coding standard.</p>';
-        $results .= '<pre>';
-        $results .= htmlspecialchars(file_get_contents($this->tmpDir . '/phpcs.txt'));
-        $results .= '</pre>';
+        if ($this->sourceFiles) {
+            $results = '<article>';
+            $results .= '<h2>PHP_CodeSniffer</h2>';
+            $results .= '<p>Here are the results from <a href="/intro-to-phpcs">PHP_CodeSniffer</a> when used to check for the PSR-2 coding standard.</p>';
+            $results .= '<pre>';
+            $results .= htmlspecialchars(file_get_contents($this->tmpDir . '/phpcs.txt'));
+            $results .= '</pre>';
+            $results .= '</article>';
+        } else {
+            $results = '<article><p>Please provide some PHP code to run this demo.';
+            $results .= ' <a href="/demo">Try again.</a></p></article>';
+        }
 
         file_put_contents($this->tmpDir . '/results.html', $results);
     }

@@ -1,9 +1,14 @@
+<style>
+	fieldset {display: inline-block;}
+</style>
+
 <article>
 
 	<h1>Tools demo</h1>
 
 	<p>
-		You can try these static analysis tools right now, no download required.<br>
+		You can try several PHP static analysis tools right now, no download or login required.
+		Paste up to 3 source files below in order to evaluate them with static analysis tools.
 		The demo supports these tools:
 		<ul>
 			<li><a href="/intro-to-phpcs">PHP_CodeSniffer</a></li>
@@ -13,7 +18,7 @@
 
 	<form action="/demo-results/process.php" method="POST">
 		<fieldset>
-			<legend>Paste up to 3 source files to try the demo</legend>
+			<legend>Try the demo</legend>
 
 			<textarea name="file1" rows="20" cols="40">&lt;?php
 
