@@ -6,7 +6,9 @@ This is the repository for phpstaticanalysis.com. This is a site about static an
 
 Current backlog of posts and features to add to the website:
 
-- Review phpcs
 - Review phpmd
 - Review phpstan
+- Add code fixers to the home page
+- Add success stories
+- Add tool comparison
 - More...

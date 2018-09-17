@@ -1,4 +1,4 @@
 .DS_Store
 vendor
-html/demo/results
+html/demo-results/*/*
 composer.lock

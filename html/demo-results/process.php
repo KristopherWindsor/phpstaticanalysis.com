@@ -8,6 +8,6 @@ $resultsId = rand();
 
 (new Demo\Runner())->run($_REQUEST, $resultsId);
 
-header('Location: /demo/results/' . dechex($resultsId));
+header('Location: /demo-results/' . dechex($resultsId));
 
 echo 'Redirecting...';
