@@ -16,7 +16,7 @@
 		</ul>
 	</p>
 
-	<form action="/demo-results/process.php" method="POST">
+	<form action="/demo-results/process.php" method="POST" onsubmit="ga('send', 'event', 'demo', 'requested')">
 		<fieldset>
 			<legend>Try the demo</legend>
 
