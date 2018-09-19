@@ -6,7 +6,7 @@ RUN a2enmod rewrite
 
 COPY ./code /code/
 COPY ./html /var/www/html/
-RUN mkdir -p /code/demo/workingdir && chmod 0755 /code/demo/workingdir
+RUN mkdir -p /code/demo/workingdir && chmod 0777 /code/demo/workingdir
 
 RUN chown -R www-data:www-data /var/www/html/
 
