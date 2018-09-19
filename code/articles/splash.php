@@ -1,15 +1,14 @@
 <div id="splash1" class="splash">
     <h1>Build better PHP software with static code analysis</h1>
 
-    <ul>
-        <li>Get fast feedback while coding</li>
-        <li>Find bugs without running code</li>
-        <li>Improve code style and testability</li>
-        <li>Watch code metrics</li>
-    </ul>
+    <p class="intro">
+        Static code analysis helps PHP developers build quality software.
+        These tools evaluate code without running it in order to help developers meet coding standards and avoid complex code.
+    </p>
 
-    <p>Join our mailing list for updates</p>
-    <br><br><br>
+    <h4>
+        <a href="/demo">Try the demo now!</a>
+    </h4>
 </div>
 
 <div id="splash2" class="splash">

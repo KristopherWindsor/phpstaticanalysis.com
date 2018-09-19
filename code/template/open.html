@@ -10,7 +10,7 @@
             .color4 {color: #557A95;}
             .color5 {color: #B1A296;}
 
-            body, html {margin: 0; padding: 0; background: #f3f3f4; color: #333;}
+            body, html {margin: 0; padding: 0; background: #f3f3f4; color: #333; font-family: 'Bookman', serif;}
 
             a {color: #379683; text-decoration: none;}
             a:hover {font-style: italic;}
@@ -29,12 +29,19 @@
             .splash {
                 width: 100%;
                 min-height: 70vh;
-                padding: 15vh 0;
+                padding: 1em;
                 background-repeat: no-repeat;
                 background-size: 100vmax;
             }
-            .splash h1 {margin: 0; padding: 1em .5em 0 .5em;}
-            #splash1 {background-image: url(img/smoke21.png); background-color: #f4f4d2;}
+            .splash h1 {margin: 0; padding: 1em 1vw 0 1vw; font-weight: normal;}
+            #splash1 {
+                background-image: url(img/phpdesk.png);
+                background-color: #f3f3f4;
+                background-size: contain;
+                background-position: bottom right;
+            }
+            #splash1 > * {margin-right: 40vw; padding-left: 1vw;}
+            #splash1 .intro {line-height: 1.4em; margin-top: 2em; margin-bottom: 4em;}
             #splash2 {background-image: url(img/smoke23.png); background-color: #f4d2d8;}
             #splash3 {background-image: url(img/smoke22.png); background-color: #d2f4ea;}
             #splash4 {background-image: url(img/smoke25.png); background-color: #d6f4d2;}
