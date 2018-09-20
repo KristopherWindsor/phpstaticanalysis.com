@@ -73,7 +73,7 @@ public function evaluateSentence(string $sentence): string
 
     <p>
         Static analysis tools can examine code and produce a list of complex methods.
-        One such tool is <i>phpmd</i>.
+        One such tool is <a href="/intro-to-phpmd">phpmd</a>.
     </p>
 
     <p>
