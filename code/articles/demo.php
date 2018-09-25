@@ -24,8 +24,8 @@
             <textarea name="file1" rows="20" cols="40">&lt;?php
 namespace Vehicle;
 
-class Car {
-    public $wheels;
+abstract class Vehicle {
+    public $wheels = [];
     public $thisVariableIsVeryVeryVeryLong;
 
     public function getMaxSpeed(): int
@@ -43,7 +43,44 @@ class Car {
 }
 </textarea>
             <textarea name="file2" rows="20" cols="40">&lt;?php
+namespace Vehicle;
 
+class Truck extends Vehicle
+{
+    private $isTowing;
+
+    /**
+     * Gets the maximum truck speed
+     */
+    public function getMaxSpeed(): int
+    {
+        return $this->isTowing ? 40 : 120;
+    }
+
+    public function methodIsTooComplex(): void
+    {
+        if (true) {
+            if (true) {
+                if (true) {
+                    if (true) {
+                        if (true) {
+                            if (true) {
+                                if (true) {
+                                    if (true) {
+                                        if (true) {
+                                            if (true) {
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 </textarea>
             <textarea name="file3" rows="20" cols="40">&lt;?php
 

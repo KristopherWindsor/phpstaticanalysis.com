@@ -20,6 +20,7 @@ class Runner
         if ($this->sourceFiles) {
             $this->runPhpcs();
             $this->runPhpmd();
+            $this->runPhpMetrics();
         }
         $this->generateResultsPage();
         $this->removeSourceFiles();
@@ -31,6 +32,7 @@ class Runner
         $this->tmpDir = __DIR__ . '/workingdir/' . $this->resultsId;
         mkdir($this->tmpDir);
         mkdir($this->tmpDir . '/code');
+        mkdir($this->tmpDir . '/phpmetrics');
     }
 
     protected function initFiles(): void
@@ -82,6 +84,20 @@ class Runner
         );
     }
 
+    protected function runPhpMetrics(): void
+    {
+        $command = '/code/demo/vendor/bin/phpmetrics --report-html='
+            . $this->tmpDir . '/phpmetrics --report-json='
+            . $this->tmpDir . '/phpmetrics/report.json --report-violations='
+            . $this->tmpDir . '/phpmetrics/report-violations.xml '
+            . $this->tmpDir . '/code';
+        exec($command, $output, $return);
+        file_put_contents(
+            $this->tmpDir . '/phpmetrics/stdout.txt',
+            '$ ' . str_replace(' ', " \\\n    ", $command) . "\n\n" . implode("\n", $output) . "\n\nExit code: " . $return
+        );
+    }
+
     protected function generateResultsPage(): void
     {
         $results = '';
@@ -109,7 +125,21 @@ class Runner
             $results .= '<pre>';
             $results .= htmlspecialchars(file_get_contents($this->tmpDir . '/phpmd.txt'));
             $results .= '</pre>';
-            $results .= '<p>PHP Mess Detector can also output in XML format as shown <a href="' . $this->resultsId . '/phpmd.xml">here</a>.</p>';
+            $results .= '<p>PHP Mess Detector can also output in XML format. See the XML output <a href="' . $this->resultsId . '/phpmd.xml">here</a>.</p>';
+            $results .= '</article>';
+
+            $results .= '<article>';
+            $results .= '<h2>PhpMetrics</h2>';
+            $results .= '<p><a href="/intro-to-php-metrics">PhpMetrics</a> generates an HTML report about your code.</p>';
+            $results .= '<p>Here are the results from PhpMetrics &mdash; both the HTML report and the console output.</p>';
+            $results .= '<a href="/demo-results/' . $this->resultsId . '/phpmetrics/index.html" class="megalink">PhpMetrics HTML Report</a>';
+            $results .= '<pre>';
+            $results .= htmlspecialchars(file_get_contents($this->tmpDir . '/phpmetrics/stdout.txt'));
+            $results .= '</pre>';
+            $results .= '<p>PhpMetrics can also output in JSON, CSV, XML formats. Click to see the ';
+            $results .= '<a href="' . $this->resultsId . '/phpmetrics/report.json">JSON output</a> or ';
+            $results .= '<a href="' . $this->resultsId . '/phpmetrics/report-violations.xml">XML output</a> (code quality violations only).';
+            $results .= '</p>';
             $results .= '</article>';
         } else {
             $results .= '<article><p>Please provide some PHP code to run this demo.';
