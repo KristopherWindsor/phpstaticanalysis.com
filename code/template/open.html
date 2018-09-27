@@ -17,13 +17,13 @@
             h1 {font-size: 20pt;}
             h2 {font-size: 16pt;}
 
-            body, html {margin: 0; padding: 0; background: #f7f7f8; color: #333; font-family: 'Bookman', serif;}
+            body, html {margin: 0; padding: 0; background: #f7f7f8; color: #333; font-family: 'Bookman', serif; height: 100%;}
             a {color: #379683; text-decoration: none;}
             a:hover {font-style: italic;}
 
             pre {color: #557A95;}
 
-            header {background: #c6b4a6; width: 100vw; height: 2.5em; overflow: hidden;}
+            header {background: #c6b4a6; width: 100vw; height: 40px; overflow: hidden;}
             header a, header a:visited {color: #333; text-decoration: none;}
             header a:hover {font-style: italic;}
             header p {line-height: 2.5em; margin: 0; padding: 0 .5em;}
@@ -35,9 +35,11 @@
                 }
             }
 
+            #content {min-height: calc(100% - 40px); margin: 0 auto -40px;}
+
             article {padding: 1em;}
 
-            footer {width: 100%; padding: .5em 0; text-align: center; margin-top: 8em; border-top: 1px solid #333;}
+            footer {width: 100%; height: 40px; text-align: center; border-top: 1px solid #333; line-height: 40px;}
 
             .megalink {display: inline-block; padding: 4em; font-size: larger; border: 1px solid #333;}
 
@@ -101,3 +103,5 @@
                 <a href="/demo">Try tools now</a>
             </p>
         </header>
+
+        <div id="content">
