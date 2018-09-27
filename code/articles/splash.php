@@ -3,7 +3,7 @@
 
     <p class="intro">
         Static code analysis helps PHP developers build quality software.
-        These tools evaluate code without running it in order to help developers meet coding standards and avoid complex code.
+        Static analysis tools evaluate code without running it in order to help developers meet coding standards, avoid complex code, and prevent bugs.
     </p>
 
     <h4>
@@ -11,6 +11,7 @@
     </h4>
 </div>
 
+<!--
 <div id="splash2" class="splash">
     <h1>Get fast feedback while coding</h1>
 
@@ -34,3 +35,4 @@
 
     <p>PhpMetrics</p>
 </div>
+-->

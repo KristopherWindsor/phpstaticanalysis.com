@@ -13,7 +13,8 @@
         The demo supports these tools:
         <ul>
             <li><a href="/intro-to-phpcs">PHP_CodeSniffer</a></li>
-            <li>More coming soon...</li>
+            <li><a href="/intro-to-phpmd">PHP Mess Detector</a></li>
+            <li><a href="/intro-to-php-metrics">PhpMetrics</a></li>
         </ul>
     </p>
 
