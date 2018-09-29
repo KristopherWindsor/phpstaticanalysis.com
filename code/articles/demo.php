@@ -18,7 +18,11 @@
         </ul>
     </p>
 
-    <form action="/demo-results/process.php" method="POST" onsubmit="ga('send', 'event', 'demo', 'requested')">
+    <form
+        action="/demo-results/process.php"
+        method="POST"
+        onsubmit="if (captchaSolved) ga('send', 'event', 'demo', 'requested'); else return false"
+    >
         <fieldset>
             <legend>Try the demo</legend>
 
@@ -87,10 +91,27 @@ class Truck extends Vehicle
 
 </textarea>
 
+            <br><br>
+            <div
+                class="g-recaptcha"
+                data-sitekey="6LensnIUAAAAABDofnIUxSd8ZMlLfmlBvdlAZIEz"
+                data-callback="recaptcha_ok"
+                data-expired-callback="recaptcha_expired">
+            </div>
+
             <br>
             <input type="submit" value="See results">
         </fieldset>
-        <div class="g-recaptcha" data-sitekey="6LensnIUAAAAABDofnIUxSd8ZMlLfmlBvdlAZIEz"></div>
     </form>
 
 </article>
+
+<script>
+var captchaSolved = false;
+function recaptcha_ok(data) {
+    captchaSolved = true;
+}
+function recaptcha_expired(data) {
+    captchaSolved = false;
+}
+</script>
