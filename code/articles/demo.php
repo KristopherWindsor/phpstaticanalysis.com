@@ -89,8 +89,8 @@ class Truck extends Vehicle
 
             <br>
             <input type="submit" value="See results">
-
         </fieldset>
+        <div class="g-recaptcha" data-sitekey="6LensnIUAAAAABDofnIUxSd8ZMlLfmlBvdlAZIEz"></div>
     </form>
 
 </article>

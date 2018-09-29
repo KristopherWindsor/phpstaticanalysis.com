@@ -15,6 +15,8 @@ class Runner
         $this->request = $request;
         $this->resultsId = $resultsId;
 
+        $this->verifyCaptcha();
+
         $this->initDir();
         $this->initFiles();
         if ($this->sourceFiles) {
@@ -25,6 +27,39 @@ class Runner
         $this->generateResultsPage();
         $this->removeSourceFiles();
         $this->installResults();
+    }
+
+    protected function verifyCaptcha(): void
+    {
+        $secret = getenv('PHPSTATICANALYSIS_CAPTCHA_SECRET');
+        if (!$secret) {
+            return; // Validation disabled
+        }
+
+        $postdata = http_build_query([
+            'secret' => $secret,
+            'response' => $this->request['g-recaptcha-response'] ?? '',
+            'remoteip' => $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'],
+        ]);
+
+        $context = stream_context_create([
+            'http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata,
+            ],
+            'ssl' => [
+                'verify_peer'      => false,
+                'verify_peer_name' => false,
+            ],
+        ]);
+
+        $result = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+        $json = @json_decode($result);
+        if (empty($json->success)) {
+            http_response_code(401);
+            die('Captcha not verified');
+        }
     }
 
     protected function initDir(): void
